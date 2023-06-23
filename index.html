@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Red+Hat+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<style>
+  .template {
+    width: 1600px;
+    height: 900px;
+    background: url('./blob-scene-haikei-2\ 26.png');
+  }
+
+  .top {
+    font-family: 'Manrope', sans-serif;
+    font-size: 50px;
+    color: #077FCA;
+    padding: 4rem;
+    line-height: normal;
+  }
+
+  .top p {
+    margin: 1rem;
+  }
+
+  .rate,
+  .detail {
+    font-family: 'Red Hat Mono', monospace;
+  }
+
+  .rate {
+    font-weight: 900;
+    font-size: 250px;
+    line-height: 12rem;
+  }
+
+  .detail {
+    font-weight: 600;
+    font-size: 83px;
+    line-height: 8rem;
+  }
+
+  .underlying {
+    padding: 0 1rem;
+    font-size: 74px;
+    font-weight: 400;
+    background-color: #757E95;
+    border-radius: 22px;
+    color: #F3F9FC;
+  }
+
+  .bottom {
+    position: relative;
+    bottom: 490px;
+    left: 0;
+  }
+
+  .logo {
+    display: inline-block;
+    position: relative;
+    bottom: -10px;
+    left: 80px;
+  }
+
+  .lumi {
+    display: inline-block;
+    position: relative;
+    bottom: -68px;
+    right: -230px;
+  }
+</style>
+
+<body>
+  <div class="template" id="capture">
+    <div class="top">
+      <p>Ask me about my</p>
+      <p class="rate"><span class="rate-input">7.857</span>%</p>
+      <p class="detail">FIXED YIELD ON <span class="underlying">USDC</span></p>
+    </div>
+    <div class="bottom">
+      <div class="logo">
+        <img src="./brand.svg" alt="">
+      </div>
+      <div class="lumi"><img src="./Lumi.png" alt=""></div>
+    </div>
+    <a style="display: none;" href="https://twitter.com/intent/tweet?text=Hello%20world" target="_blank">Tweet</a>
+  </div>
+  <script src="./html2canvas.mjs"></script>
+  <script>
+    let rate = prompt("Enter the rate");
+    let underlying = prompt("Enter the underlying");
+    document.querySelector(".rate-input").innerHTML = rate;
+    document.querySelector(".underlying").innerHTML = underlying;
+
+    prepTweet();
+    html2canvas(document.querySelector("#capture")).then(canvas => {
+      downloadCanvasAsWebP(canvas, 'rate-flex.webp');
+    });
+
+    function prepTweet() {
+      const tweet = document.querySelector('a');
+      tweet.href = `https://twitter.com/intent/tweet?text=Ask%20me%20about%20my%20${rate}%25%20FIXED%20YIELD%20ON%20${underlying}%20%23Lumi%20%23LumiEarn%20%23DeFi%20%23Yield%20%23Crypto%20%23CryptoNews%20%23CryptoTwitter%20%23CryptoCommunity%20%23CryptoCurrency%20%23CryptoTrading%20%23CryptoAlert%20%23CryptoMarket%20%23CryptoExchange%20%23CryptoTrading%20%23CryptoWallet%20%23CryptoInvesting%20%23CryptoInvestor%20%23CryptoInvest%20%23CryptoInvestment%20%23CryptoIn`,
+        tweet.click();
+    }
+
+    function downloadCanvasAsWebP(canvas, filename) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/webp');
+      link.click();
+    }
+  </script>
+</body>
+
+</html>
